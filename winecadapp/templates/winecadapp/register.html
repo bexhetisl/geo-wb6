@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <title>Registration</title>
+
+    <style>
+
+      body{
+        background: rgba(0, 0, 0, 0.85);
+      }
+    </style>
+
+  </head>
+  <body>
+  <div class="row">
+    <div class="col-md-8 m-auto pt-3">
+      <div class="card bg-dark m-auto" style="width: 60%; box-shadow: 10px 10px 15px white;">
+        <div class="card-title text-center">
+            <h2 class="mt-3 text-white">Create your Geo-Wb6 Account</h3>
+                 <img alt="Geoinformation Centre for the Western Balkans" class="img-responsive" src="https://files.cdn-files-a.com/uploads/9342349/400_filter_nobg_66b6b279b7c19.png">
+         
+          <!-- <i class="fa fa-shopping-cart fa-10x mt-3" style="color: #5bc0de"></i> -->
+        </div>
+        <div class="card-body">
+          <form method="post" action="">
+              {% csrf_token %}
+            <div class="input-group mb-2">
+              <button class="btn btn-info" style="border-radius: 0; pointer-events: none;"><i class="fa fa-user fa-2x"></i></button>
+                {{form.username}}
+            </div>
+            <div class="input-group mb-2">
+              <button class="btn btn-info" style="border-radius: 0; pointer-events: none;"><i class="fa fa-envelope fa-2x"></i></button>
+                {{form.email}}
+            </div>
+            <div class="input-group mb-2">
+              <button class="btn btn-info" style="border-radius: 0; pointer-events: none;"><i class="fa fa-key fa-2x"></i></button>
+                {{form.password1}}
+            </div>
+            <div class="input-group mb-2">
+              <button class="btn btn-info" style="border-radius: 0; pointer-events: none;"><i class="fa fa-key fa-2x"></i></button>
+                {{form.password2}}
+            </div>
+             <button class="btn btn-info" style="border-radius: 0;">Register</button>
+            <h6 class="text-white">Already have an account? <a class="btn btn-info" href="{% url 'login' %}">Login Instead</a></h6>
+          </form>
+            {% if form.errors %}
+            <button class="btn btn-info">{{form.errors}}</button>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder='Username..';
+        form_fields[2].placeholder='Email..';
+        form_fields[3].placeholder='Enter password...';
+        form_fields[4].placeholder='Re-enter Password...';
+
+
+        for (var field in form_fields){
+            form_fields[field].className += ' form-control py-4'
+        }
+    </script>
+  </body>
+</html>
